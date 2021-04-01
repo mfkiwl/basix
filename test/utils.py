@@ -8,22 +8,22 @@ import pytest
 def parametrize_over_elements(order, reference=None):
     elementlist = []
 
-    elementlist += [(c, "Lagrange", o)
+    elementlist += [(c, "P", o)
                     for c in ["interval", "triangle", "tetrahedron", "quadrilateral", "hexahedron"]
                     for o in range(1, order + 1)]
-    elementlist += [(c, "Discontinuous Lagrange", o)
+    elementlist += [(c, "DP", o)
                     for c in ["interval", "triangle", "tetrahedron", "quadrilateral", "hexahedron"]
                     for o in range(0, order + 1)]
-    elementlist += [(c, "Nedelec 1st kind H(curl)", o)
+    elementlist += [(c, "N1E", o)
                     for c in ["triangle", "tetrahedron", "quadrilateral", "hexahedron"]
                     for o in range(1, order + 1)]
-    elementlist += [(c, "Raviart-Thomas", o)
+    elementlist += [(c, "RT", o)
                     for c in ["triangle", "tetrahedron", "quadrilateral", "hexahedron"]
                     for o in range(1, order + 1)]
-    elementlist += [(c, "Nedelec 2nd kind H(curl)", o)
+    elementlist += [(c, "N2E", o)
                     for c in ["triangle", "tetrahedron", "quadrilateral", "hexahedron"]
                     for o in range(1, order + 1)]
-    elementlist += [(c, "Brezzi-Douglas-Marini", o)
+    elementlist += [(c, "BDM", o)
                     for c in ["triangle", "tetrahedron", "quadrilateral", "hexahedron"]
                     for o in range(1, order + 1)]
     elementlist += [(c, "Crouzeix-Raviart", o)
