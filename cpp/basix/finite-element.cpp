@@ -3,16 +3,16 @@
 // SPDX-License-Identifier:    MIT
 
 #include "finite-element.h"
-#include "brezzi-douglas-marini.h"
-#include "bubble.h"
-#include "crouzeix-raviart.h"
-#include "lagrange.h"
-#include "nce-rtc.h"
-#include "nedelec.h"
+#include "e-brezzi-douglas-marini.h"
+#include "e-bubble.h"
+#include "e-crouzeix-raviart.h"
+#include "e-lagrange.h"
+#include "e-nce-rtc.h"
+#include "e-nedelec.h"
+#include "e-raviart-thomas.h"
+#include "e-regge.h"
+#include "e-serendipity.h"
 #include "polyset.h"
-#include "raviart-thomas.h"
-#include "regge.h"
-#include "serendipity.h"
 #include <numeric>
 
 #include <xtensor-blas/xlinalg.hpp>

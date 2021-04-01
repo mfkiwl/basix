@@ -2,9 +2,9 @@
 // FEniCS Project
 // SPDX-License-Identifier:    MIT
 
-#include "serendipity.h"
+#include "e-serendipity.h"
+#include "e-lagrange.h"
 #include "element-families.h"
-#include "lagrange.h"
 #include "lattice.h"
 #include "log.h"
 #include "maps.h"
@@ -982,7 +982,6 @@ FiniteElement basix::create_serendipity_curl(cell::type celltype, int degree)
     xt::view(base_transformations, edge, range, range)
         = xt::view(edge_transforms, 0, xt::all(), xt::all());
   }
-
 
   if (tdim == 3 and degree > 1)
   {

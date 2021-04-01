@@ -2,7 +2,7 @@
 // FEniCS Project
 // SPDX-License-Identifier:    MIT
 
-#include "lagrange.h"
+#include "e-lagrange.h"
 #include "dof-transformations.h"
 #include "element-families.h"
 #include "lattice.h"

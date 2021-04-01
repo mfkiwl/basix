@@ -4,7 +4,7 @@
 
 #include "lattice.h"
 #include "cell.h"
-#include "lagrange.h"
+#include "e-lagrange.h"
 #include "quadrature.h"
 
 #include <xtensor-blas/xlinalg.hpp>

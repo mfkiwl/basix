@@ -2,7 +2,7 @@
 // FEniCS Project
 // SPDX-License-Identifier:    MIT
 
-#include "crouzeix-raviart.h"
+#include "e-crouzeix-raviart.h"
 #include "element-families.h"
 #include "maps.h"
 #include "polyset.h"

@@ -2,14 +2,14 @@
 // FEniCS Project
 // SPDX-License-Identifier:    MIT
 
-#include "nedelec.h"
+#include "e-nedelec.h"
+#include "e-lagrange.h"
+#include "e-raviart-thomas.h"
 #include "element-families.h"
-#include "lagrange.h"
 #include "maps.h"
 #include "moments.h"
 #include "polyset.h"
 #include "quadrature.h"
-#include "raviart-thomas.h"
 #include <numeric>
 #include <vector>
 #include <xtensor/xbuilder.hpp>

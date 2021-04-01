@@ -2,9 +2,9 @@
 // FEniCS Project
 // SPDX-License-Identifier:    MIT
 
-#include "nce-rtc.h"
+#include "e-nce-rtc.h"
+#include "e-lagrange.h"
 #include "element-families.h"
-#include "lagrange.h"
 #include "log.h"
 #include "maps.h"
 #include "moments.h"

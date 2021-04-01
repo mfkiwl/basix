@@ -2,7 +2,7 @@
 // FEniCS Project
 // SPDX-License-Identifier:    MIT
 
-#include "bubble.h"
+#include "e-bubble.h"
 #include "element-families.h"
 #include "lattice.h"
 #include "maps.h"
