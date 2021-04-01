@@ -144,7 +144,7 @@ def test_line(n):
     celltype = basix.CellType.interval
     g = sympy_lagrange(celltype, n)
     x = sympy.Symbol("x")
-    lagrange = basix.create_element("Lagrange", "interval", n)
+    lagrange = basix.create_element("P", "interval", n)
     pts = basix.create_lattice(celltype, 6, basix.LatticeType.equispaced, True)
     nderiv = n
     wtab = lagrange.tabulate(nderiv, pts)
@@ -164,7 +164,7 @@ def test_tri(order):
     g = sympy_lagrange(celltype, order)
     x = sympy.Symbol("x")
     y = sympy.Symbol("y")
-    lagrange = basix.create_element("Lagrange", "triangle", order)
+    lagrange = basix.create_element("P", "triangle", order)
     pts = basix.create_lattice(celltype, 6, basix.LatticeType.equispaced, True)
     nderiv = 3
     wtab = lagrange.tabulate(nderiv, pts)
@@ -187,7 +187,7 @@ def test_tet(order):
     x = sympy.Symbol("x")
     y = sympy.Symbol("y")
     z = sympy.Symbol("z")
-    lagrange = basix.create_element("Lagrange", "tetrahedron", order)
+    lagrange = basix.create_element("P", "tetrahedron", order)
     pts = basix.create_lattice(celltype, 6,
                                basix.LatticeType.equispaced, True)
     nderiv = 1
@@ -213,7 +213,7 @@ def test_tet(order):
                                       (basix.CellType.tetrahedron, "tetrahedron")])
 @pytest.mark.parametrize("order", [1, 2, 3, 4])
 def test_lagrange(celltype, order):
-    lagrange = basix.create_element("Lagrange", celltype[1], order)
+    lagrange = basix.create_element("P", celltype[1], order)
     pts = basix.create_lattice(celltype[0], 6, basix.LatticeType.equispaced, True)
     w = lagrange.tabulate(0, pts)[0]
     assert(numpy.isclose(numpy.sum(w, axis=1), 1.0).all())
@@ -221,13 +221,13 @@ def test_lagrange(celltype, order):
 
 @pytest.mark.parametrize("order", [1, 2, 3, 4])
 def test_dof_transformations_interval(order):
-    lagrange = basix.create_element("Lagrange", "interval", order)
+    lagrange = basix.create_element("P", "interval", order)
     assert len(lagrange.base_transformations) == 0
 
 
 @pytest.mark.parametrize("order", [1, 2, 3, 4])
 def test_dof_transformations_triangle(order):
-    lagrange = basix.create_element("Lagrange", "triangle", order)
+    lagrange = basix.create_element("P", "triangle", order)
 
     permuted = {}
     if order == 3:
@@ -256,7 +256,7 @@ def test_dof_transformations_triangle(order):
 
 @pytest.mark.parametrize("order", [1, 2, 3, 4])
 def test_dof_transformations_tetrahedron(order):
-    lagrange = basix.create_element("Lagrange", "tetrahedron", order)
+    lagrange = basix.create_element("P", "tetrahedron", order)
 
     permuted = {}
     if order == 3:
@@ -306,7 +306,7 @@ def test_dof_transformations_tetrahedron(order):
     (basix.CellType.prism, "prism")
 ])
 def test_celltypes(order, celltype):
-    tp = basix.create_element("Lagrange", celltype[1], order)
+    tp = basix.create_element("P", celltype[1], order)
     pts = basix.create_lattice(celltype[0], 5,
                                basix.LatticeType.equispaced, True)
     w = tp.tabulate(0, pts)[0]

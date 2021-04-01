@@ -8,9 +8,9 @@ import pytest
 import numpy as np
 
 elements = [
-    "Lagrange",  # identity
-    "Nedelec 1st kind H(curl)",  # covariant Piola
-    "Raviart-Thomas",  # contravariant Piola
+    "P",  # identity
+    "N1E",  # covariant Piola
+    "RT",  # contravariant Piola
     "Regge",  # double covariant Piola
 ]
 

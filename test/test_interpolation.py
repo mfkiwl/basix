@@ -10,7 +10,7 @@ from .utils import parametrize_over_elements
 
 @pytest.mark.parametrize("n", range(1, 6))
 @pytest.mark.parametrize("cell_name", ["interval", "triangle", "tetrahedron"])
-@pytest.mark.parametrize("element_name", ["Lagrange"])
+@pytest.mark.parametrize("element_name", ["P"])
 def test_interpolation(cell_name, n, element_name):
     element = basix.create_element(element_name, cell_name, n)
     assert element.interpolation_matrix.shape[0] == element.dim
@@ -22,8 +22,7 @@ def test_interpolation(cell_name, n, element_name):
 def test_interpolation_matrix(cell_name, order, element_name):
     if order > 4:
         if cell_name in ["quadrilateral", "hexahedron"] and element_name in [
-            "Raviart-Thomas", "Nedelec 1st kind H(curl)", "Brezzi-Douglas-Marini",
-            "Nedelec 2nd kind H(curl)"
+            "RT", "N1E", "BDM", "N2E"
         ]:
             pytest.xfail("High order Hdiv and Hcurl spaces on hexes based on "
                          "Lagrange spaces with equally spaced points are unstable.")
