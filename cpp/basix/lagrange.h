@@ -25,11 +25,15 @@ FiniteElement create_lagrange(cell::type celltype, int degree,
 /// hexahedral celltype
 /// @param[in] degree
 /// @return A FiniteElement
-FiniteElement create_dlagrange(cell::type celltype, int degree);
+FiniteElement create_dlagrange(cell::type celltype, int degree,
+                               lattice::type lattice_type
+                               = lattice::type::gll_warped);
 
 /// Create a DPC element on cell with given degree
 /// @param[in] celltype interval, quadrilateral or hexahedral celltype
 /// @param[in] degree
 /// @return A FiniteElement
-FiniteElement create_dpc(cell::type celltype, int degree);
+FiniteElement create_dpc(cell::type celltype, int degree,
+                         lattice::type lattice_type
+                         = lattice::type::gll_warped);
 } // namespace basix

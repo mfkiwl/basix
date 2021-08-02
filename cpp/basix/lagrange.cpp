@@ -153,7 +153,8 @@ FiniteElement basix::create_lagrange(cell::type celltype, int degree,
                        entity_transformations, x, M, maps::type::identity);
 }
 //-----------------------------------------------------------------------------
-FiniteElement basix::create_dlagrange(cell::type celltype, int degree)
+FiniteElement basix::create_dlagrange(cell::type celltype, int degree,
+                                      lattice::type lattice_type)
 {
   // Only tabulate for scalar. Vector spaces can easily be built from
   // the scalar space.
@@ -167,8 +168,7 @@ FiniteElement basix::create_dlagrange(cell::type celltype, int degree)
   M[tdim].push_back(xt::xtensor<double, 3>({ndofs, 1, ndofs}));
   xt::view(M[tdim][0], xt::all(), 0, xt::all()) = xt::eye<double>(ndofs);
 
-  const auto pt
-      = lattice::create(celltype, degree, lattice::type::equispaced, true);
+  const auto pt = lattice::create(celltype, degree, lattice_type, true);
   std::array<std::vector<xt::xtensor<double, 2>>, 4> x;
   x[tdim].push_back(pt);
 
@@ -198,7 +198,8 @@ FiniteElement basix::create_dlagrange(cell::type celltype, int degree)
                        entity_transformations, x, M, maps::type::identity);
 }
 //-----------------------------------------------------------------------------
-FiniteElement basix::create_dpc(cell::type celltype, int degree)
+FiniteElement basix::create_dpc(cell::type celltype, int degree,
+                                lattice::type lattice_type)
 {
   // Only tabulate for scalar. Vector spaces can easily be built from
   // the scalar space.
@@ -248,8 +249,7 @@ FiniteElement basix::create_dpc(cell::type celltype, int degree)
   M[tdim].push_back(xt::xtensor<double, 3>({ndofs, 1, ndofs}));
   xt::view(M[tdim][0], xt::all(), 0, xt::all()) = xt::eye<double>(ndofs);
 
-  const auto pt
-      = lattice::create(simplex_type, degree, lattice::type::equispaced, true);
+  const auto pt = lattice::create(simplex_type, degree, lattice_type, true);
   std::array<std::vector<xt::xtensor<double, 2>>, 4> x;
   x[tdim].push_back(pt);
 

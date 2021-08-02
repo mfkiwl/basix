@@ -11,6 +11,7 @@
 #include "element-families.h"
 #include "lattice.h"
 #include "maps.h"
+#include "moments.h"
 #include "precompute.h"
 #include <array>
 #include <numeric>
@@ -717,19 +718,27 @@ private:
       _etrans_invT;
 };
 
-/// Create an element by name
+/// Create an element by name, giving a lattice type
 FiniteElement create_element(std::string family, std::string cell, int degree,
                              lattice::type lattice_type);
+
+/// Create an element by name, giving a moment type
+FiniteElement create_element(std::string family, std::string cell, int degree,
+                             moments::type moment_type);
 
 /// Create an element by name
 FiniteElement create_element(std::string family, std::string cell, int degree);
 
-/// Create an element by name
+/// Create an element by type, giving a lattice type
 FiniteElement
 create_element(element::family family, cell::type cell, int degree,
                lattice::type lattice_type);
 
-/// Create an element by name
+/// Create an element by type, giving a moment type
+FiniteElement create_element(element::family family, cell::type cell,
+                             int degree, moments::type moment_type);
+
+/// Create an element by type
 FiniteElement
 create_element(element::family family, cell::type cell, int degree);
 

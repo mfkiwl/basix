@@ -144,6 +144,10 @@ Interface to the Basix C++ library.
       },
       "Create a uniform lattice of points on a reference cell");
 
+  py::enum_<moments::type>(m, "MomentType")
+      .value("DP_gll", moments::type::DP_gll)
+      .value("DP_equispaced", moments::type::DP_equispaced);
+
   py::enum_<maps::type>(m, "MappingType")
       .value("identity", maps::type::identity)
       .value("covariantPiola", maps::type::covariantPiola)
@@ -411,6 +415,15 @@ Interface to the Basix C++ library.
          lattice::type lattice_type) -> FiniteElement {
         return basix::create_element(family_name, cell_name, degree,
                                      lattice_type);
+      },
+      "Create a FiniteElement of a given family, celltype and degree");
+
+  m.def(
+      "create_element",
+      [](const std::string family_name, const std::string cell_name, int degree,
+         moments::type moment_type) -> FiniteElement {
+        return basix::create_element(family_name, cell_name, degree,
+                                     moment_type);
       },
       "Create a FiniteElement of a given family, celltype and degree");
 

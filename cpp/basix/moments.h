@@ -17,6 +17,11 @@ class FiniteElement;
 /// against spaces on a subentity of the cell
 namespace moments
 {
+enum class type
+{
+  DP_gll,
+  DP_equispaced
+};
 
 /// Create the dof transformations for the DOFs defined using a dot
 /// integral moment.

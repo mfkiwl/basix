@@ -83,6 +83,14 @@ basix::FiniteElement basix::create_element(std::string family, std::string cell,
 }
 //-----------------------------------------------------------------------------
 basix::FiniteElement basix::create_element(std::string family, std::string cell,
+                                           int degree,
+                                           moments::type moment_type)
+{
+  return basix::create_element(element::str_to_type(family),
+                               cell::str_to_type(cell), degree, moment_type);
+}
+//-----------------------------------------------------------------------------
+basix::FiniteElement basix::create_element(std::string family, std::string cell,
                                            int degree)
 {
   return basix::create_element(element::str_to_type(family),
@@ -165,8 +173,47 @@ basix::FiniteElement basix::create_element(element::family family,
   {
   case element::family::P:
     return create_lagrange(cell, degree, lattice_type);
+  case element::family::DP:
+    return create_dlagrange(cell, degree, lattice_type);
+  case element::family::DPC:
+    return create_dpc(cell, degree, lattice_type);
   default:
     throw std::runtime_error("Cannot pass a lattice type to this element.");
+  }
+}
+//-----------------------------------------------------------------------------
+basix::FiniteElement basix::create_element(element::family family,
+                                           cell::type cell, int degree,
+                                           moments::type moment_type)
+{
+  switch (family)
+  {
+  case element::family::RT:
+  {
+    switch (cell)
+    {
+    case cell::type::quadrilateral:
+      return create_rtc(cell, degree, moment_type);
+    case cell::type::hexahedron:
+      return create_rtc(cell, degree, moment_type);
+    default:
+      throw std::runtime_error("Cannot pass a moment type to this element.");
+    }
+  }
+  case element::family::N1E:
+  {
+    switch (cell)
+    {
+    case cell::type::quadrilateral:
+      return create_nce(cell, degree, moment_type);
+    case cell::type::hexahedron:
+      return create_nce(cell, degree, moment_type);
+    default:
+      throw std::runtime_error("Cannot pass a moment type to this element.");
+    }
+  }
+  default:
+    throw std::runtime_error("Cannot pass a moment type to this element.");
   }
 }
 //-----------------------------------------------------------------------------
